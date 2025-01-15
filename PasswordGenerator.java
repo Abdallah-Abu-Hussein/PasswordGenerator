@@ -29,6 +29,7 @@ public class PasswordGenerator {
         String password = generatePassword(length, includeUppercase, includeNumbers, includeSpecial);
         System.out.println("Generated Password: " + password);
         savePasswordToFile(password);
+        System.out.println("Password Strength : " + checkPasswordStrength(password));
         scanner.close();
     }
 
@@ -64,6 +65,21 @@ public class PasswordGenerator {
         } catch (IOException e) {
             System.out.println("An error occurred while saving the password.");
             e.printStackTrace();
+        }
+    }
+
+   public static String checkPasswordStrength(String password) {
+        int score = 0;
+        if (password.length() >= 8) score++;
+        if (password.matches(".*[A-Z].*")) score++;
+        if (password.matches(".*[0-9].*")) score++;
+        if (password.matches(".*[!@#$%^&*()-_=+<>?].*")) score++;
+
+        switch (score) {
+            case 4: return "Very Strong";
+            case 3: return "Strong";
+            case 2: return "Moderate";
+            default: return "Weak";
         }
     }
 
