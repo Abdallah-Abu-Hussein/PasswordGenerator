@@ -28,7 +28,7 @@ public class PasswordGenerator {
 
         String password = generatePassword(length, includeUppercase, includeNumbers, includeSpecial);
         System.out.println("Generated Password: " + password);
-
+        savePasswordToFile(password);
         scanner.close();
     }
 
@@ -54,6 +54,17 @@ public class PasswordGenerator {
         }
 
         return password.toString();
+    }
+
+
+  public static void savePasswordToFile(String password) {
+        String filePath = "generatedPassword.txt";
+        try (FileWriter writer = new FileWriter(filePath, true)) { // Append mode
+            writer.write("Generated Password: " + password + "\n");
+        } catch (IOException e) {
+            System.out.println("An error occurred while saving the password.");
+            e.printStackTrace();
+        }
     }
 
 }
