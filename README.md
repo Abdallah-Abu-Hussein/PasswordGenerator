@@ -1,5 +1,5 @@
 # Password Generator
-
+[Video Link](https://youtu.be/264usbLaZjk)
 ## Overview
 This project is a simple Java-based **Password Generator** that allows users to generate secure passwords based on customizable preferences. It includes additional features such as password strength evaluation and saving generated passwords to a file.
 
